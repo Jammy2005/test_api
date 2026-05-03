@@ -9,7 +9,7 @@ def get_api_key():
         return os.getenv('ANTHROPIC_API_KEY')
 
     # on EC2/Lambda: fetch from Secrets Manager
-    client = boto3.client('secretsmanager', region_name='us-east-1')
+    client = boto3.client('secretsmanager', region_name='eu-north-1')
     secret = client.get_secret_value(SecretId='prod/anthropic-api-key')
     data = json.loads(secret['SecretString'])
     return data['ANTHROPIC_API_KEY']

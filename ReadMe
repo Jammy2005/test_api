@@ -22,6 +22,10 @@ curl -X POST http://127.0.0.1:8000/infer/stream \
 -d '{"prompt": "What is AI?", "max_tokens": 100}' \
 --no-buffer
 
+## during deployment
+sudo systemctl restart llm-api   # after code changes
+sudo systemctl stop llm-api      # stop it
+sudo journalctl -u llm-api -f    # live logs (like tail -f)
 
 
 """
