@@ -8,13 +8,9 @@ from tenacity import (
 )
 import os
 import anthropic
-from dotenv import load_dotenv
 
-load_dotenv()
-
-client = anthropic.Anthropic(
-    api_key=os.environ.get("ANTHROPIC_API_KEY"),
-)
+api_key = os.environ.get("ANTHROPIC_API_KEY")
+client = anthropic.Anthropic(api_key=api_key)
 
 @retry(
     stop=stop_after_attempt(3),                    # max 3 attempts

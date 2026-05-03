@@ -27,5 +27,8 @@ sudo systemctl restart llm-api   # after code changes
 sudo systemctl stop llm-api      # stop it
 sudo journalctl -u llm-api -f    # live logs (like tail -f)
 
+## for debugging
+sudo journalctl -u llm-api -n 20 --no-pager
+
 
 """

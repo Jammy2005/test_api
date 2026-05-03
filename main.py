@@ -15,6 +15,7 @@ def get_api_key():
     return data['ANTHROPIC_API_KEY']
 
 api_key = get_api_key()
+os.environ["ANTHROPIC_API_KEY"] = api_key
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
