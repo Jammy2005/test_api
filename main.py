@@ -1,3 +1,21 @@
+# for AWS
+import boto3, json, os
+
+def get_api_key():
+    # locally: use .env file as normal
+    if os.path.exists('.env'):
+        from dotenv import load_dotenv
+        load_dotenv()
+        return os.getenv('ANTHROPIC_API_KEY')
+
+    # on EC2/Lambda: fetch from Secrets Manager
+    client = boto3.client('secretsmanager', region_name='us-east-1')
+    secret = client.get_secret_value(SecretId='prod/anthropic-api-key')
+    data = json.loads(secret['SecretString'])
+    return data['ANTHROPIC_API_KEY']
+
+api_key = get_api_key()
+
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from middleware.logging import logging_middleware
