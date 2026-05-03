@@ -1,0 +1,27 @@
+"""
+questions: 
+
+
+1. should the /health be an exception in the middleware?
+
+2. is the only error handler we need the global error handler?
+
+"""
+
+
+"""
+
+curl http://127.0.0.1:8000/health
+
+curl -X POST http://127.0.0.1:8000/infer \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "What is AI?", "max_tokens": 100}'
+
+curl -X POST http://127.0.0.1:8000/infer/stream \
+-H "Content-Type: application/json" \
+-d '{"prompt": "What is AI?", "max_tokens": 100}' \
+--no-buffer
+
+
+
+"""
